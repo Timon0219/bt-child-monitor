@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'validators',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -105,14 +106,19 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',  # Change this to 'WARNING' or 'ERROR' to further reduce logs
             'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',  # Change this to 'WARNING' or 'ERROR' to further reduce logs
+        },
         'django.db.backends': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',  # Change this to 'WARNING' or 'ERROR' to further reduce logs
+            'propagate': False,
         },
     },
 }

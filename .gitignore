@@ -7,3 +7,4 @@ path/to/venv/
 test.py
 test_cur.py
 output.txt
+test_storage_map.py
