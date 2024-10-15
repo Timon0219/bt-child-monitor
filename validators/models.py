@@ -8,7 +8,7 @@ class Validators(models.Model):
     coldkey = models.CharField(max_length=255)
     hotkey = models.CharField(max_length=255, unique=True)
     stake = models.FloatField()
-    parentkey_netuids = models.JSONField(default=list, blank=True)
+    validator_installed_netuids = models.JSONField(default=list, blank=True)
     childkeys = models.JSONField(default=list, blank=True)
     parentkeys = models.JSONField(default=list, blank=True)
 
@@ -44,11 +44,11 @@ class Validators(models.Model):
         else:
             self.save()
 
-    def get_parentkey_netuids(self):
-        # Deserialize parentkey_netuids from JSON
-        if isinstance(self.parentkey_netuids, str):
-            return json.loads(self.parentkey_netuids)
-        return self.parentkey_netuids
+    def get_validator_installed_netuids(self):
+        # Deserialize validator_installed_netuids from JSON
+        if isinstance(self.validator_installed_netuids, str):
+            return json.loads(self.validator_installed_netuids)
+        return self.validator_installed_netuids
 
     def __str__(self):
         return self.hotkey

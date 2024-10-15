@@ -1,0 +1,7 @@
+
+# Path to the folder where repository database files are stored
+DATABASE_DIR: "db"
+SUBTENSORMODULE : '658faa385070e074c85bf6b568cf0555'  # fex code for SubtensorModule : call_module
+PARENTKEYS : 'de41ae13ae40a9d3c5fd9b3bdea86fe2'  # fex code for parentkeys : call_function
+CHAIN_ENDPOINT : "wss://entrypoint-finney.opentensor.ai:443"
+FULL_PROPORTION : 18446744073709551615

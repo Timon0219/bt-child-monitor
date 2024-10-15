@@ -9,14 +9,10 @@ import os
 
 load_dotenv()
 
-# CHAIN_ENDPOINT = os.getenv("CHAIN_ENDPOINT") 
-CHAIN_ENDPOINT = "wss://entrypoint-finney.opentensor.ai:443"
-fullProportion = 18446744073709551615
-
 class RPCRequest:
-    def __init__(self, call_module, call_function):
-        self.chain_endpoint = CHAIN_ENDPOINT
-        self.fullProportion = fullProportion
+    def __init__(self, chain_endpoint, call_module, call_function, FullProportion):
+        self.chain_endpoint = chain_endpoint
+        self.fullProportion = FullProportion
         self.call_module = call_module
         self.call_function = call_function
             
@@ -71,7 +67,7 @@ class RPCRequest:
 
     async def call_rpc(self, call_params):
         async with websockets.connect(
-            CHAIN_ENDPOINT, ping_interval=None
+            self.chain_endpoint, ping_interval=None
         ) as ws:
             await ws.send(json.dumps(
                 {
@@ -79,7 +75,6 @@ class RPCRequest:
                     "id": 1,
                     "method": "state_subscribeStorage",
                     'params' : [call_params]
-                
                 }
             ))
             ignore = await ws.recv()  # ignore the first response since it's a just a confirmation
