@@ -11,4 +11,4 @@ services:
       - SENTRY_DSN=${SENTRY_DSN}
     env_file:
       - ./.env
-    command: ["python", "main.py"]
+    command: ["python", "main.py", "--interval", "3600", "config.yaml"]
