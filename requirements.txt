@@ -78,3 +78,5 @@ websockets==13.1
 wheel==0.44.0
 xxhash==3.5.0
 yarl==1.13.1
+django
+psycopg2-binary
