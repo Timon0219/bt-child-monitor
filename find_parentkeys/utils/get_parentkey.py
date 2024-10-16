@@ -150,8 +150,8 @@ class RPCRequest:
                 for parent_hotkey_hex in parent_hotkey_hexs:
                     parent_hotkey = self.convert_hex_to_ss58(parent_hotkey_hex)
                     parent_proportion_demical = self.hex_to_decimal(self.reverse_hex(parent_hotkey_hex[:16]))
-                    parent_proporton = parent_proportion_demical / self.fullProportion
-                    parent_keys.append({'hotkey': parent_hotkey, 'proportion': parent_proporton, 'net_uid' : net_uid})
+                    parent_proportion = round(parent_proportion_demical / self.fullProportion, 4)
+                    parent_keys.append({'hotkey': parent_hotkey, 'proportion': parent_proportion, 'net_uid' : net_uid})
                 
         # print(parent_keys)
         return parent_keys
