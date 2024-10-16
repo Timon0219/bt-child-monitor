@@ -16,18 +16,18 @@ class Migration(migrations.Migration):
             name='HotkeyModel',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('stake', models.FloatField()),
                 ('hotkey', models.CharField(max_length=255)),
+                ('stake', models.FloatField()),
             ],
         ),
         migrations.CreateModel(
             name='ChildHotkeyModel',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('netuid', models.IntegerField()),
-                ('proportion', models.FloatField()),
-                ('child', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='child_hotkeys', to='validators.hotkeymodel')),
                 ('parent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='parent_hotkeys', to='validators.hotkeymodel')),
+                ('child', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='child_hotkeys', to='validators.hotkeymodel')),
+                ('proportion', models.FloatField()),
+                ('netuid', models.IntegerField()),
             ],
         ),
     ]

@@ -1,0 +1,13 @@
+# example of config.yaml file
+
+DATABASE_DIR: "db"  # Path to the folder where repository database files are stored
+
+SUBTENSORMODULE: '658faa385070e074c85bf6b568cf0555'  # Hex code for SubtensorModule: call_module
+
+PARENTKEYS_FUNCTION: 'de41ae13ae40a9d3c5fd9b3bdea86fe2'  # Hex code for parentKeys: call_function
+
+TOTALHOTKEYSTAKE_FUNCTION: '7b4e834c482cd6f103e108dacad0ab65'  # Hex code for totalHotkeyStake: call_function
+
+CHAIN_ENDPOINT: "wss://entrypoint-finney.opentensor.ai:443"  # chain endpoint for connection
+
+FULL_PROPORTION: 18446744073709551615  # 2^64 - 1: Hex code representing 100% of the stake

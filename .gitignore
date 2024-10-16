@@ -9,3 +9,4 @@ test_cur.py
 output.txt
 test_storage_map.py
 migration
+config.yaml
