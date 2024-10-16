@@ -66,3 +66,21 @@ class ValidatorChildKeyInfo(models.Model):
 
     class Meta:
         unique_together = ('parent_hotkey', 'child_hotkey', 'subnet_uid')
+        
+
+class HotkeyModel(models.Model):
+    stake = models.FloatField()  # or IntegerField, based on your needs
+    hotkey = models.CharField(max_length=255)  # Adjust max_length as needed
+
+    def __str__(self):
+        # Customize this string to display what you want in the dropdown
+        return f"{self.hotkey} (Stake: {self.stake})"
+
+class ChildHotkeyModel(models.Model):
+    child = models.ForeignKey(HotkeyModel, related_name='child_hotkeys', on_delete=models.CASCADE)
+    parent = models.ForeignKey(HotkeyModel, related_name='parent_hotkeys', on_delete=models.CASCADE)
+    netuid = models.IntegerField()
+    proportion = models.FloatField()
+
+    def __str__(self):
+        return f"Child: {self.child}, Parent: {self.parent}, NetUID: {self.netuid}"

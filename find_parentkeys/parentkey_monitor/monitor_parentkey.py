@@ -12,7 +12,7 @@ from find_parentkeys.database_manage.db_manage import DataBaseManager
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bt_childkey_monitor.settings')
 django.setup()
 
-from validators.models import Validators
+from validators.models import Validators, HotkeyModel, ChildHotkeyModel
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -26,8 +26,8 @@ class ParentkeyMonitor:
         """
         Initialize the ParentkeyMonitor class.
         """
-        pass  # Consider adding initialization logic if needed
-
+        pass  
+    
     def get_subnet_uids(self, subtensor) -> List[int]:
         """
         Retrieve subnet UIDs from the subtensor.
@@ -61,6 +61,7 @@ class ParentkeyMonitor:
 
             for i in range(len(neuron_uids)):
                 if stakes[i] > 1000:
+                    hotkey = HotkeyModel(hotkey = hotkeys[i], stake = stakes[i])
                     validator = Validators(
                         coldkey=coldkeys[i],
                         hotkey=hotkeys[i],
